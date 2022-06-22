@@ -1,34 +1,29 @@
 package ru.netology.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
 
-    private Collection<Player> players;
+    private Map<String, Player> players;
 
     public Game() {
-        this.players = new ArrayList<>();
+        this.players = new HashMap<>();
     }
 
     public void register(Player newPlayer) {
-        players.add(newPlayer);
+        players.put(newPlayer.getName(), newPlayer);
     }
 
     public Player findByName(String name) {
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                return player;
-            }
-        }
-        return null;
+        return players.get(name);
     }
 
     public int round(String name1, String name2) {
-        if (findByName(name1) == null) {
+        if (!players.containsKey(name1)) {
             throw new NotRegisteredException("Player " + name1 + " not registered");
         }
-        if (findByName(name2) == null) {
+        if (!players.containsKey(name2)) {
             throw new NotRegisteredException("Player " + name2 + " not registered");
         }
         if (findByName(name1).getStrength() > findByName(name2).getStrength()) {

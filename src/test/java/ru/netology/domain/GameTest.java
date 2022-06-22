@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 public class GameTest {
 
     Game game = new Game();
+
     Player player1 = new Player(1, "First", 10);
     Player player2 = new Player(2, "Second", 5);
     Player player3 = new Player(3, "Third", 10);
@@ -64,9 +65,3 @@ public class GameTest {
         });
     }
 }
-
-
-
-
-
-
